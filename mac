@@ -43,7 +43,7 @@ fi
 
 append_to_zshrc 'export PATH="$HOME/.bin:$PATH"'
 
-if [[ "$SHELL" != */zsh ]]; then
+if ! printf "%s\n" "$SHELL" | grep -q '/zsh$'; then
   fancy_echo "Changing your shell to zsh ..."
     chsh -s "$(which zsh)"
 fi
