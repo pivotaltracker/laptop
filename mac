@@ -140,8 +140,13 @@ brew_install_or_upgrade 'nvm'
 append_to_zshrc 'export PATH="$PATH:/usr/local/lib/node_modules"'
 append_to_zshrc 'source $(brew --prefix nvm)/nvm.sh' 1
 
+<<<<<<< HEAD
 source "$(brew --prefix nvm)/nvm.sh"
 nvm install "$node_version"
+=======
+  . "$(brew --prefix nvm)/nvm.sh"
+  nvm install "$node_version"
+>>>>>>> 351355b... Replace source bashism with POSIX .
 
 fancy_echo "Setting $node_version as the global default nodejs..."
 nvm alias default "$node_version"
@@ -183,5 +188,5 @@ if ! command -v rcup >/dev/null; then
 fi
 
 if [ -f ~/.laptop.local ]; then
-  source ~/.laptop.local
+  . ~/.laptop.local
 fi
