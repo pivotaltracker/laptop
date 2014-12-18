@@ -187,6 +187,6 @@ if ! command -v rcup >/dev/null; then
   brew_install_or_upgrade 'rcm'
 fi
 
-if [ -f ~/.laptop.local ]; then
-  . ~/.laptop.local
+if [ -f "$HOME/.laptop.local" ]; then
+  . "$HOME/.laptop.local"
 fi
