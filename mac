@@ -105,7 +105,8 @@ gem_install_or_update() {
 
 if ! command -v brew >/dev/null; then
   fancy_echo "Installing Homebrew ..."
-    ruby <(curl -fsS https://raw.githubusercontent.com/Homebrew/install/master/install)
+    curl -fsS \
+      'https://raw.githubusercontent.com/Homebrew/install/master/install' | ruby
 
     append_to_zshrc '# recommended by brew doctor'
     append_to_zshrc 'export PATH="/usr/local/bin:$PATH"' 1
@@ -140,13 +141,8 @@ brew_install_or_upgrade 'nvm'
 append_to_zshrc 'export PATH="$PATH:/usr/local/lib/node_modules"'
 append_to_zshrc 'source $(brew --prefix nvm)/nvm.sh' 1
 
-<<<<<<< HEAD
-source "$(brew --prefix nvm)/nvm.sh"
+. "$(brew --prefix nvm)/nvm.sh"
 nvm install "$node_version"
-=======
-  . "$(brew --prefix nvm)/nvm.sh"
-  nvm install "$node_version"
->>>>>>> 351355b... Replace source bashism with POSIX .
 
 fancy_echo "Setting $node_version as the global default nodejs..."
 nvm alias default "$node_version"
