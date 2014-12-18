@@ -14,7 +14,7 @@ append_to_zshrc() {
   local text="$1" zshrc
   local skip_new_line="$2"
 
-  if [[ -w "$HOME/.zshrc.local" ]]; then
+  if [ -w "$HOME/.zshrc.local" ]; then
     zshrc="$HOME/.zshrc.local"
   else
     zshrc="$HOME/.zshrc"
@@ -33,11 +33,11 @@ trap 'ret=$?; test $ret -ne 0 && printf "failed\n\n" >&2; exit $ret' EXIT
 
 set -e
 
-if [[ ! -d "$HOME/.bin/" ]]; then
+if [ ! -d "$HOME/.bin/" ]; then
   mkdir "$HOME/.bin"
 fi
 
-if [[ ! -f "$HOME/.zshrc" ]]; then
+if [ ! -f "$HOME/.zshrc" ]; then
   touch "$HOME/.zshrc"
 fi
 
@@ -146,7 +146,7 @@ nvm install "$node_version"
 fancy_echo "Setting $node_version as the global default nodejs..."
 nvm alias default "$node_version"
 
-if [[ ! -d "$HOME/.rbenv" ]]; then
+if [ ! -d "$HOME/.rbenv" ]; then
   brew_install_or_upgrade 'rbenv'
   brew_install_or_upgrade 'ruby-build'
   append_to_zshrc 'eval "$(rbenv init - zsh --no-rehash)"' 1
@@ -182,6 +182,6 @@ if ! command -v rcup >/dev/null; then
   brew_install_or_upgrade 'rcm'
 fi
 
-if [[ -f ~/.laptop.local ]]; then
+if [ -f ~/.laptop.local ]; then
   source ~/.laptop.local
 fi
