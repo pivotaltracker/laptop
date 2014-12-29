@@ -1,3 +1,5 @@
+## WARNING!  This repo (https://github.com/pivotaltracker/laptop) is a fork of upstream https://github.com/thoughtbot/laptop - the master branch will be squashed and rebased against the upstream and force-pushed regularly, so you shouldn't branch off of it unless you know what you are doing.
+
 Laptop
 ======
 
