@@ -1,0 +1,5 @@
+before_script:
+  - sudo apt-get -y install shellcheck
+
+script:
+  - shellcheck mac
