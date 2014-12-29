@@ -159,14 +159,25 @@ brew_install_or_upgrade 'libyaml'
 
 ruby_version="$(curl -sSL http://ruby.thoughtbot.com/latest)"
 
-eval "$(rbenv init - zsh)"
+if [[ "$USE_CHRUBY" != 'true' ]]; then
+  eval "$(rbenv init - zsh)"
 
-if ! rbenv versions | grep -Fq "$ruby_version"; then
-  rbenv install -s "$ruby_version"
+  if ! rbenv versions | grep -Fq "$ruby_version"; then
+    rbenv install -s "$ruby_version"
+  fi
+
+  rbenv global "$ruby_version"
+  rbenv shell "$ruby_version"
+else
+  brew_install_or_upgrade 'ruby-install'
+  if ! ruby --version | grep -Fq "$ruby_version"; then
+    ruby-install ruby "$ruby_version"
+  fi
+
+  brew_install_or_upgrade 'chruby'
+  append_to_zshrc 'source /usr/local/opt/chruby/share/chruby/chruby.sh'
+  append_to_zshrc 'source /usr/local/opt/chruby/share/chruby/auto.sh'
 fi
-
-rbenv global "$ruby_version"
-rbenv shell "$ruby_version"
 
 gem update --system
 

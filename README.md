@@ -1,5 +1,11 @@
 ## WARNING!  This repo (https://github.com/pivotaltracker/laptop) is a fork of upstream https://github.com/thoughtbot/laptop - the master branch will be squashed and rebased against the upstream and force-pushed regularly, so you shouldn't branch off of it unless you know what you are doing.
 
+## Changes in this fork:
+
+* set `USE_CHRUBY=true` to use chruby/ruby-install instead of rbenv
+
+----
+
 Laptop
 ======
 
@@ -28,7 +34,7 @@ Download, review, then execute the script:
 ```sh
 curl --remote-name https://raw.githubusercontent.com/thoughtbot/laptop/master/mac
 less mac
-bash mac 2>&1 | tee ~/laptop.log
+[USE_CHRUBY=true] bash mac 2>&1 | tee ~/laptop.log
 ```
 
 Debugging
