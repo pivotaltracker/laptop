@@ -178,6 +178,8 @@ else
   append_to_zshrc 'source /usr/local/opt/chruby/share/chruby/chruby.sh'
   append_to_zshrc 'source /usr/local/opt/chruby/share/chruby/auto.sh'
   append_to_zshrc "chruby $ruby_version"
+  source /usr/local/opt/chruby/share/chruby/chruby.sh
+  chruby "$ruby_version"
 fi
 
 gem update --system
